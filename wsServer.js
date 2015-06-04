@@ -20,20 +20,18 @@ console.log("Server started... on port 8100");
   
 
 
-ws.on('connection', function (ws) {
+ws.on('connection', function (client) {
     
-     ws.broadcast = function broadcast(data) {
-  ws.clients.forEach(function each(client) {
-    client.send(data);
-  });
-};
+//    ws.broadcast = function broadcast(data) {
+//        ws.clients.forEach(function each(client) {
+//            client.send(data);
+//        });
+//    };
     
   
   console.log("Connection open");
- 
-  console.log("Browser connected online COUCOU...");
   
-  ws.on('message', function incoming(data) {
+  client.on('message', function incoming(data) {
   //ws.send('something');
 //  var data = data;
 //   console.log("Message");
@@ -46,20 +44,29 @@ ws.on('connection', function (ws) {
           console.log("Browser envoit qqch ---------");
           console.log(object.content);
             
-      }else{
-          
+      }else{          
           console.log("Android envoit qqch ---------");
-         console.log(object.windSpeed);
-         
-      
-         
+         //console.log(object.windSpeed);  
+                 ws.clients.forEach(function each(clientCurrent) {
+            if(clientCurrent!=client){
+                clientCurrent.send(object.windSpeed);
+            }else{
+                
+            }
+            
+        });
             //ws.send(object.windspeed);
       }
-
-
      
-   //// test broadcast
-      
+   // test broadcast
+//        ws.clients.forEach(function each(clientCurrent) {
+//            if(clientCurrent!=client){
+//                clientCurrent.send(data);
+//            }else{
+//                
+//            }
+//            
+//        });
 
      
 //      var object = JSON.parse(data);
@@ -91,7 +98,7 @@ ws.on('connection', function (ws) {
   
     });
     
-       ws.on('close', function() {
+       client.on('close', function() {
         console.log("Browser gone.")
     });
   

@@ -17,7 +17,8 @@ $(function () {
         
         
         console.log("incoming message");
-        // 
+        console.log(message);
+        $("h1").text("Votre souffle est à "+message.data+" km/h");
         // 
 //       	  var message = JSON.parse(message.data);
 //  	switch(message.type) {
