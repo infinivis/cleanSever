@@ -12,6 +12,7 @@ var myRun_interval = function (howLength) {
 
 
 $(document).ready(function () {
+    initManometer();
     console.log("ready!");
 
     $("#grow").on("click", function () {
@@ -59,9 +60,38 @@ $("#stop").on("click", function () {
 
     })
     
-});
+    
+$("#colorWorse").on("click", function () {
+       console.log("color worsing");
+//       var rgb = rgb(45,45,69);
+//       rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+// var finalColor = "#" +
+//  ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+//  ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+//  ("0" + parseInt(rgb[3],10).toString(16)).slice(-2);
+//
+//       
+////       var changingColor = troncColor.substring(1);
+////       var colorInt = parseInt(changingColor);
+//       console.log(finalColor);
+//       //var newColor = colorInt+10;
+//       //console.log(newColor);
+//      
+//       
+       troncColor = "#9D1309";
+
+    })
+
+   
+    
+    
+    
+ 
+    
+});/////end DOM ready
 
 function growStep() {
+    wind=curent+wind_dev;
     for (i in arbre) {
         if ((arbre[i].left == null) && (arbre[i].right == null)) {
             if (Math.random() < 0.07) {
@@ -79,6 +109,7 @@ function growStep() {
 }
 
 function unGrowStep() {
+    wind=curent+wind_dev;
     for (i in arbre) {
         if ((arbre[i].left == null) && (arbre[i].right == null)) {
             if (Math.random() < 0.07) {

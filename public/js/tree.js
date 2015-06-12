@@ -5,7 +5,9 @@ console.log(heightFull);
 //var widthFull = 1920;
 //var heightFull = 1342;
 
-
+var arbrePositionX = 550;
+var arbrePositionY = 800;
+var troncColor = "#6B4226";
 
 var dessin=CreateCanvas('canvas');
 		
@@ -28,10 +30,10 @@ var dessin=CreateCanvas('canvas');
 							
 		var gamma=0.86;		
 //		var gamma=0.86;		
-		arbre[0].x=400;
-		arbre[0].y=550;
-		arbre[1].x=400;
-		arbre[1].y=540;
+		arbre[0].x=arbrePositionX;
+		arbre[0].y=arbrePositionY;
+		arbre[1].x=arbrePositionX;
+		arbre[1].y=arbrePositionY-10;
 //		arbre[0].x=400;
 //		arbre[0].y=550;
 //		arbre[1].x=400;
@@ -65,26 +67,72 @@ var dessin=CreateCanvas('canvas');
 			}			
 			var stack = new Array;
 			stack.push(arbre[1]);			
+//			while(stack.length>0){
+//				var temp = stack.pop();				
+//				if(!(temp.left==null)){				
+//					var angle=Math.atan2(temp.parent.y-temp.y,temp.x-temp.parent.x)+gamma*(temp.length-temp.left.length)/temp.length;																		
+//					var len=1;
+//					if((!(temp.left.left==null))&&(!(temp.left.right==null))){
+//						len=Math.sqrt(2*(temp.left.left.length*temp.left.right.length)/(temp.left.left.length+temp.left.right.length));
+//					}					
+//					temp.left.x=temp.x+len*Math.cos(angle);
+//					temp.left.y=temp.y-len*Math.sin(angle);					
+//					stack.push(temp.left);
+//				}				
+//				if(!(temp.right==null)){
+//					var angle=Math.atan2(temp.parent.y-temp.y,temp.x-temp.parent.x)-gamma*(temp.length-temp.right.length)/temp.length;														
+//					var len=1;
+//					if((!(temp.right.left==null))&&(!(temp.right.right==null))){
+//						len=Math.sqrt(2*(temp.right.left.length*temp.right.right.length)/(temp.right.left.length+temp.right.right.length));
+//					}
+//					temp.right.x=temp.x+len*Math.cos(angle);
+//					temp.right.y=temp.y-len*Math.sin(angle);				
+//					stack.push(temp.right);
+//				}
+//			}
+
+			
 			while(stack.length>0){
-				var temp = stack.pop();				
-				if(!(temp.left==null)){				
-					var angle=Math.atan2(temp.parent.y-temp.y,temp.x-temp.parent.x)+gamma*(temp.length-temp.left.length)/temp.length;																		
+				var temp = stack.pop();
+				
+				if(!(temp.left==null)){
+				
+					var angle=Math.atan2(temp.parent.y-temp.y,temp.x-temp.parent.x)+gamma*(temp.length-temp.left.length)/temp.length;
+					
+					if(Math.abs(angle)>Math.PI/2){
+						angle+=(Math.PI-Math.abs(angle))*angle/Math.abs(angle)*wind;
+					}else{
+						angle+=angle*wind;
+					}
+					
+					
 					var len=1;
 					if((!(temp.left.left==null))&&(!(temp.left.right==null))){
 						len=Math.sqrt(2*(temp.left.left.length*temp.left.right.length)/(temp.left.left.length+temp.left.right.length));
-					}					
+					}
+					
 					temp.left.x=temp.x+len*Math.cos(angle);
-					temp.left.y=temp.y-len*Math.sin(angle);					
+					temp.left.y=temp.y-len*Math.sin(angle);
+					
 					stack.push(temp.left);
-				}				
+				}
+				
 				if(!(temp.right==null)){
-					var angle=Math.atan2(temp.parent.y-temp.y,temp.x-temp.parent.x)-gamma*(temp.length-temp.right.length)/temp.length;														
+					var angle=Math.atan2(temp.parent.y-temp.y,temp.x-temp.parent.x)-gamma*(temp.length-temp.right.length)/temp.length;
+					
+					if(Math.abs(angle)>Math.PI/2){
+						angle+=(Math.PI-Math.abs(angle))*angle/Math.abs(angle)*wind;
+					}else{
+						angle+=angle*wind;
+					}
+					
 					var len=1;
 					if((!(temp.right.left==null))&&(!(temp.right.right==null))){
 						len=Math.sqrt(2*(temp.right.left.length*temp.right.right.length)/(temp.right.left.length+temp.right.right.length));
 					}
 					temp.right.x=temp.x+len*Math.cos(angle);
-					temp.right.y=temp.y-len*Math.sin(angle);				
+					temp.right.y=temp.y-len*Math.sin(angle);
+					
 					stack.push(temp.right);
 				}
 			}
@@ -106,7 +154,8 @@ var dessin=CreateCanvas('canvas');
 		}
 		
 		var run_interval=null;
-		function run(){			
+		function run(){	
+                    wind=curent+wind_dev;
 			for(i in arbre){
 				if((arbre[i].left==null)&&(arbre[i].right==null)){
 					if(Math.random()<0.07){
@@ -140,9 +189,11 @@ var pat=dessin.context.createPattern(img,"repeat");
 //dessin.context.rect(0,0,800,600);
 dessin.context.fillStyle=pat;
 dessin.context.fill();
-    	dessin.context.fillRect(0,0,widthFull,heightFull);		
+    	dessin.context.fillRect(0,0,widthFull,heightFull);
+        
+        wind=curent*wind_strength+wind_dev;
 			recalculate();								
-			dessin.context.strokeStyle="white";			
+			dessin.context.strokeStyle= troncColor;			
 			dessin.context.save();
 			dessin.context.translate(-200,-270);
 			dessin.context.scale(1.5,1.5);
