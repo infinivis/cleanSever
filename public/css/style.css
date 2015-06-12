@@ -11,41 +11,27 @@ text-align: center;
 }
 
 
+
+
 #canvas{
-    background: #fff;
-    opacity: 0.2;
-}
-#canapea{
-    //background: #fff;
-    //opacity: 0.2;
-}
-
-#cadre{
-    text-align: center;
-   // padding: 30px;
-    height:100%;
-    width:100%;
-    margin: 0;
-  padding: 0;
-  height:900px;
-  line-height:900px;
-  
-    
-}
-
-
-#fond{
+     // background-image: url("../img/fondLight.jpg");
+     background-color: blueviolet;
+   
+margin: 0;
      
-    background-image: url("../img/fondLight.jpg");
-    background-size: 100%;
-margin: auto;
-     width: 80%;
-     height: 80%;
       display:inline-block;
   vertical-align:middle;
   line-height:normal;
      
 }
+
+
+
+
+#boutons{
+    line-height:normal;
+}
+
 
 #title{
     display:inline-block;
@@ -59,4 +45,5 @@ h1{
 
 img{
     display: none;
+
 }

@@ -44,19 +44,21 @@ function CreateCanvas(elementId){
 
 
 
-//
-//         function draw_linie(){
-//             context.save();
-//             context.beginPath();
-//             context.moveTo(this.x1,this.y1);
-//             context.lineTo(this.x2,this.y2);
-//             context.strokeStyle = 'black';
-//             context.stroke();
-//             context.restore();
-//         }
-//
-//
-//
-//         canvas.onmousedown=start_draw;
-//         canvas.onmouseup=stop_draw;
-//         canvas.onmouseout=stop_draw;
+
+        // function draw_linie(){
+            // context.save();
+            // context.beginPath();
+            // context.moveTo(this.x1,this.y1);
+            // context.lineTo(this.x2,this.y2);
+            // context.strokeStyle = 'black';
+            // context.stroke();
+            // context.restore();
+        // }
+
+
+
+        // canvas.onmousedown=start_draw;
+        // canvas.onmouseup=stop_draw;
+        // canvas.onmouseout=stop_draw;
+
+

@@ -1,0 +1,148 @@
+<html> 
+  <head> 
+    <title>Life birth</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+    <style type="text/css"> 
+		body{
+			margin: 0;
+			padding: 0;
+			width:800;
+			margin-left:auto;
+			margin-right:auto;
+			background: black;
+			color: black;
+			text-align: left;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 0.8em;
+		}
+    </style> 
+	<script type="text/javascript" src="canvas.js"></script> 
+  </head> 
+  <body> 
+	
+	<canvas id="canapea" width="800" height="475" style="position:absolute;"></canvas> 
+	 
+	<script type="text/javascript"> 
+		var desen=CreateCanvas('canapea');
+		
+		function nod(){
+			this.x=0;
+			this.y=0;
+			this.length=0;
+			this.parent = null;
+			this.left = null;
+			this.right = null;
+		}
+				
+		var copac = new Array;
+		copac[0]=new nod;
+		copac[1]=new nod;
+		copac[1].parent=copac[0];
+							
+		var gamma=0.86;		
+		copac[0].x=400;
+		copac[0].y=550;
+		copac[1].x=400;
+		copac[1].y=540;
+					
+		function recalculate(){		
+			for(x in copac){
+				if(!(copac[x].parent==null)){
+					if(copac[x].length>10){
+						if((copac[x].left==null) && (copac[x].right==null)){
+ 
+							copac[x].left=new nod;
+							copac[x].right=new nod;
+							
+							copac[x].left.length=Math.floor(Math.random()*(copac[x].length-2))+1;
+							copac[x].right.length=copac[x].length-copac[x].left.length;
+							
+							
+							copac[x].left.parent=copac[x];
+							copac[x].right.parent=copac[x];
+							
+							copac.push(copac[x].left);
+							copac.push(copac[x].right);
+						}
+					}
+				}
+			}			
+			var stack = new Array;
+			stack.push(copac[1]);			
+			while(stack.length>0){
+				var temp = stack.pop();				
+				if(!(temp.left==null)){				
+					var angle=Math.atan2(temp.parent.y-temp.y,temp.x-temp.parent.x)+gamma*(temp.length-temp.left.length)/temp.length;																		
+					var len=1;
+					if((!(temp.left.left==null))&&(!(temp.left.right==null))){
+						len=Math.sqrt(2*(temp.left.left.length*temp.left.right.length)/(temp.left.left.length+temp.left.right.length));
+					}					
+					temp.left.x=temp.x+len*Math.cos(angle);
+					temp.left.y=temp.y-len*Math.sin(angle);					
+					stack.push(temp.left);
+				}				
+				if(!(temp.right==null)){
+					var angle=Math.atan2(temp.parent.y-temp.y,temp.x-temp.parent.x)-gamma*(temp.length-temp.right.length)/temp.length;														
+					var len=1;
+					if((!(temp.right.left==null))&&(!(temp.right.right==null))){
+						len=Math.sqrt(2*(temp.right.left.length*temp.right.right.length)/(temp.right.left.length+temp.right.right.length));
+					}
+					temp.right.x=temp.x+len*Math.cos(angle);
+					temp.right.y=temp.y-len*Math.sin(angle);				
+					stack.push(temp.right);
+				}
+			}
+		}
+		
+		function add(x,to){
+			while(!(to.parent==null)){
+				to.length+=x;
+				to=to.parent;
+			}
+			to.length+=x;
+		}
+		
+		var run_interval=null;
+		function run(){			
+			for(i in copac){
+				if((copac[i].left==null)&&(copac[i].right==null)){
+					if(Math.random()<0.07){
+						add(Math.random()*3,copac[i]);
+					}
+				}
+			}
+			recalculate();		
+			if(copac.length>2000) clearInterval(run_interval);
+		}										
+		
+		function draw(){			
+			for(x=2;x<copac.length;x++){
+				desen.context.beginPath();
+				desen.context.moveTo(copac[x].x,copac[x].y);
+				desen.context.quadraticCurveTo(copac[x].parent.x,copac[x].parent.y,copac[x].parent.parent.x,copac[x].parent.parent.y);
+				desen.context.moveTo(copac[x].parent.parent.x,copac[x].parent.parent.y);
+				desen.context.closePath();
+				desen.context.lineWidth=Math.sqrt(copac[x].length)*0.1;
+				desen.context.lineCap="square";
+				desen.context.stroke();						
+			}							
+		}
+		
+		function arata(){
+			desen.context.fillStyle="black";
+			desen.context.fillRect(0,0,800,600);		
+			recalculate();								
+			desen.context.strokeStyle="white";			
+			desen.context.save();
+			desen.context.translate(-200,-270);
+			desen.context.scale(1.5,1.5);
+			desen.context.translate(0,-60);			
+			draw();
+			desen.context.restore();			
+		}
+										
+		run_interval = setInterval(run, 1);
+		setInterval(arata,60);						
+	</script> 
+  </body> 
+</html> 
