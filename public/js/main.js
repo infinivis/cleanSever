@@ -1,3 +1,5 @@
+var kmh1;
+var kmh2;
 var howLength;
 var myRun_interval = function (howLength) {
 
@@ -56,9 +58,9 @@ $("#stop").on("click", function () {
        console.log("Stop grow");
        myStopFunction();
 
-    })
+    });
 
-    })
+    });
     
     
 $("#colorWorse").on("click", function () {
@@ -80,7 +82,64 @@ $("#colorWorse").on("click", function () {
 //       
        troncColor = "#9D1309";
 
-    })
+    });
+    
+    
+   $("#arrowReverse").on("click", function () {
+       console.log("Arrow Reverse");
+   
+        animations[0].pathClock.direction = -1;
+        arrow.followOrientation = Math.PI;
+        animations[0].pathClock.reset();
+        animations[0].pathClock.start();
+      
+   }); 
+   
+   $("#j1FAIBLE").on("click", function () {
+       console.log("j1 FAIBLE");
+       kmh1= 15;
+       $( document ).trigger( "WindIncoming", kmh1 );
+      
+       
+        animations[0].pathClock.stop();
+      
+       
+   }); 
+   $("#j2FAIBLE").on("click", function () {
+       console.log("j2 FAIBLE");
+       kmh2= 15;
+       $( document ).trigger( "WindIncoming", kmh2 );
+   }); 
+   $("#j1JUSTE").on("click", function () {
+       console.log("j1 JUSTE");
+       kmh1= 30;
+       $( document ).trigger( "WindIncoming", kmh1 );
+   }); 
+   $("#j2JUSTE").on("click", function () {
+       console.log("j2 JUSTE");
+       kmh2= 30;
+       $( document ).trigger( "WindIncoming", kmh2 );
+   }); 
+   $("#j1FORT").on("click", function () {
+       console.log("j1 FORT");
+       kmh1= 45;
+       $( document ).trigger( "WindIncoming", kmh1 );
+   }); 
+   $("#j2FORT").on("click", function () {
+       console.log("j2 FORT");
+       kmh2= 45;
+       $( document ).trigger( "WindIncoming", kmh2 );
+   }); 
+   
+   $( document ).on( "WindIncoming", function( event, arg1 ) {
+   
+    console.log( arg1 );           
+   
+});
+ 
+
+ 
+
 
    
     

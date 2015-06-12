@@ -1,4 +1,5 @@
-// Main canvas and context references
+
+    // Main canvas and context references
     var canvas;
     var ctx;
 
@@ -12,29 +13,28 @@
 
       // Control and anchor points
       this.points = [
-                    [ [72.5, 346.7], [53.5, 315.9], [42.5, 279.3], [42.5, 240.0] ],
-                    [ [42.5, 240.0], [42.5, 130.9], [127.4, 42.5], [232.2, 42.5] ],
-                    [ [232.2, 42.5], [336.9, 42.5], [421.9, 130.9], [421.9, 240.0] ],
-                    [ [421.9, 240.0], [421.9, 277.1], [412.1, 311.8], [395.0, 341.4] ]
+                    [ [217.0, 239.0], [215.2, 236.0], [214.2, 232.6], [214.2, 228.8] ],
+                    [ [214.2, 228.8], [214.2, 217.9], [223.1, 209.1], [234.0, 209.1] ],
+                    [ [234.0, 209.1], [244.9, 209.1], [253.8, 217.9], [253.8, 228.8] ],
+                    [ [253.8, 228.8], [253.8, 231.0], [253.4, 233.1], [252.8, 235.1] ]
                     ];
 
       // Linear motion index
       this.linear = [
-                    [0, 0.00, 0.00], [0, 0.47, 0.06], [0, 0.92, 0.13], [1, 0.13, 0.19], 
-                    [1, 0.30, 0.25], [1, 0.47, 0.31], [1, 0.65, 0.38], [1, 0.82, 0.44], 
-                    [1, 0.99, 0.50], [2, 0.16, 0.56], [2, 0.33, 0.63], [2, 0.51, 0.69], 
-                    [2, 0.68, 0.75], [2, 0.85, 0.81], [3, 0.03, 0.88], [3, 0.50, 0.94], 
-                    [3, 1.00, 1.00]
+                    [0, 0.00, 0.00], [0, 0.50, 0.07], [0, 0.99, 0.13], [1, 0.16, 0.20], 
+                    [1, 0.33, 0.27], [1, 0.51, 0.33], [1, 0.68, 0.40], [1, 0.85, 0.47], 
+                    [2, 0.01, 0.53], [2, 0.18, 0.60], [2, 0.35, 0.67], [2, 0.53, 0.73], 
+                    [2, 0.70, 0.80], [2, 0.87, 0.87], [3, 0.16, 0.93], [3, 1.00, 1.00]
                     ];
 
       // Segment T boundaries
-      this.segmentT = [0.14, 0.50, 0.87, 1.00];
+      this.segmentT = [0.13, 0.53, 0.92, 1.00];
 
       this.lastValue = -1.0;
       this.x = 0;
       this.y = 0;
       this.orientation = 0.0;
-      this.pathClock = new clock(10.00, 0.00, 1, false, 0, linear, this.linear.length - 1, 1.00, 0.0000);
+      this.pathClock = new clock(5.00, 0.00, 1, false, 0, linear, this.linear.length - 1, 1.00, 0.0000);
 
       // Update function
       this.update = updatePath;
@@ -83,6 +83,8 @@
       ctx.rotate(arrow.followOrientation + animations[0].orientation);
       arrow(ctx);
       ctx.restore();
+
+      centre(ctx);
     }
 
     function manometer(ctx) {
@@ -731,13 +733,13 @@
       // arrow/Groupe/Trac
       ctx.save();
       ctx.beginPath();
-      ctx.moveTo(8.9, -21.4);
-      ctx.lineTo(19.3, -21.4);
-      ctx.lineTo(14.1, -12.4);
-      ctx.lineTo(8.9, -3.4);
-      ctx.lineTo(3.7, -12.4);
-      ctx.lineTo(-1.5, -21.4);
-      ctx.lineTo(8.9, -21.4);
+      ctx.moveTo(0.0, -133.3);
+      ctx.lineTo(-10.0, -133.3);
+      ctx.lineTo(-5.0, -142.3);
+      ctx.lineTo(0.0, -151.3);
+      ctx.lineTo(5.0, -142.3);
+      ctx.lineTo(10.0, -133.3);
+      ctx.lineTo(0.0, -133.3);
       ctx.closePath();
       ctx.fillStyle = "rgb(203, 203, 204)";
       ctx.fill();
@@ -749,27 +751,29 @@
 
       // arrow/Groupe/Trac
       ctx.beginPath();
-      ctx.moveTo(8.9, 30.1);
-      ctx.lineTo(-1.5, 30.1);
-      ctx.lineTo(3.7, 21.1);
-      ctx.lineTo(8.9, 12.1);
-      ctx.lineTo(14.1, 21.1);
-      ctx.lineTo(19.3, 30.1);
-      ctx.lineTo(8.9, 30.1);
-      ctx.closePath();
-      ctx.fill();
-      ctx.stroke();
-
-      // arrow/Groupe/Trac
-      ctx.beginPath();
-      ctx.moveTo(13.9, 195.8);
-      ctx.lineTo(4.9, 195.8);
-      ctx.lineTo(4.9, 29.8);
-      ctx.lineTo(13.9, 29.8);
-      ctx.lineTo(13.9, 195.8);
+      ctx.moveTo(4.8, -0.4);
+      ctx.lineTo(-3.8, -0.4);
+      ctx.lineTo(-3.8, -133.5);
+      ctx.lineTo(4.8, -133.5);
+      ctx.lineTo(4.8, -0.4);
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
       ctx.restore();
+      ctx.restore();
+    }
+
+    function centre(ctx) {
+
+      // centre/Trac
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(266.5, 224.0);
+      ctx.bezierCurveTo(266.5, 242.0, 251.9, 256.5, 234.0, 256.5);
+      ctx.bezierCurveTo(216.1, 256.5, 201.5, 242.0, 201.5, 224.0);
+      ctx.bezierCurveTo(201.5, 206.1, 216.1, 191.5, 234.0, 191.5);
+      ctx.bezierCurveTo(251.9, 191.5, 266.5, 206.1, 266.5, 224.0);
+      ctx.closePath();
+      ctx.fill();
       ctx.restore();
     }

@@ -201,8 +201,12 @@ dessin.context.fill();
 			draw();
 			dessin.context.restore();
 
+
+
+
 					
 		}
 										
 		run_interval = setInterval(run, 1);
 		setInterval(show,60);	
+          
