@@ -85,11 +85,22 @@ $("#colorWorse").on("click", function () {
     });
     
     
-   $("#arrowReverse").on("click", function () {
+   $("#arrowBackward").on("click", function () {
        console.log("Arrow Reverse");
    
         animations[0].pathClock.direction = -1;
+        
         arrow.followOrientation = Math.PI;
+        animations[0].pathClock.reset();
+        animations[0].pathClock.start();
+      
+   }); 
+   $("#arrowForward").on("click", function () {
+       console.log("Arrow Reverse");
+   
+        animations[0].pathClock.direction = 1;
+        
+        arrow.followOrientation = 0;
         animations[0].pathClock.reset();
         animations[0].pathClock.start();
       
