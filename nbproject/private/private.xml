@@ -5,9 +5,9 @@
         <group>
             <file>file:/H:/github/cleanServerWS/public/css/style.css</file>
             <file>file:/H:/github/cleanServerWS/public/js/main.js</file>
-            <file>file:/H:/github/cleanServerWS/public/js/tree.js</file>
             <file>file:/H:/github/cleanServerWS/public/index.html</file>
-            <file>file:/H:/github/cleanServerWS/public/img/fondLight.jpg</file>
+            <file>file:/H:/github/cleanServerWS/public/js/manometer.js</file>
+            <file>file:/H:/github/cleanServerWS/public/js/manometerAnimation.js</file>
         </group>
     </open-files>
 </project-private>

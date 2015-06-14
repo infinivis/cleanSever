@@ -1,5 +1,14 @@
-//my variables
-var myAngle = 0;
+<!DOCTYPE html>
+
+<!-- Created with Ai->Canvas Export Plug-In Version 1.2 (PC/64) -->
+<!-- By Mike Swanson (http://blog.mikeswanson.com/)             -->
+
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <title>manometerCS6_solid</title>
+  <script src="Ai2CanvasAnimation.js"></script>
+  <script>
 
     // Main canvas and context references
     var canvas;
@@ -40,18 +49,17 @@ var myAngle = 0;
       this.update = updatePath;
     }
 
-    function initManometer() {
+    function init() {
 
       // Set main canvas and context references
-      canvas = document.getElementById("canvasManometer");
+      canvas = document.getElementById("canvas");
       ctx = canvas.getContext("2d");
-      
 
       // Initialize animations
       ombrage.followOrientation = 0.00 * Math.PI / 180.0;
 
       // Start animation clocks
-      //animations[0].pathClock.start();
+      animations[0].pathClock.start();
 
       // Set animation timer
       setInterval(drawFrame, (1000 / fps));
@@ -82,16 +90,8 @@ var myAngle = 0;
       leds(ctx);
 
       ctx.save();
-     ctx.translate(animations[0].x, animations[0].y);
-     ctx.translate(0, 0);
-     
-     
-     
-      ctx.rotate(ombrage.followOrientation + animations[0].orientation + myAngle);
-      //ctx.rotate(myAngle);
-      //console.log(ombrage.followOrientation);
-      //console.log(animations[0].orientation);
-      //ctx.rotate(myAngle * Math.PI/180 + animations[0].orientation);
+      ctx.translate(animations[0].x, animations[0].y);
+      ctx.rotate(ombrage.followOrientation + animations[0].orientation);
       ombrage(ctx);
       ctx.restore();
 
@@ -167,3 +167,14 @@ var myAngle = 0;
       ctx.fillText("27.5", 245.3, 172.6);
       ctx.restore();
     }
+  </script>
+ </head>
+ <body onload="init()">
+   <canvas id="canvas" width="384" height="384"></canvas>
+   <img alt="couronne" id="image1" style="display: none" src="couronne.png" />
+   <img alt="leds" id="image2" style="display: none" src="leds.png" />
+   <img alt="ombrage" id="image3" style="display: none" src="ombre.png" />
+   <img alt="fond" id="image4" style="display: none" src="features.png" />
+   <img alt="warning" id="image5" style="display: none" src="warning.png" />
+ </body>
+</html>

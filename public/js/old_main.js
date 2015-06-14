@@ -88,10 +88,7 @@ $("#colorWorse").on("click", function () {
    $("#testMoveArrow").on("click", function () {
        console.log("Move arrow");
    
-   myAngle = myAngle+ 0.1010000000000001;
-   //var arctan = -2.4649345476100026;
-   
-       
+       myAngle = myAngle+1;
       
    }); 
    $("#arrowBackward").on("click", function () {
@@ -99,7 +96,7 @@ $("#colorWorse").on("click", function () {
    
         animations[0].pathClock.direction = -1;
         
-        ombrage.followOrientation = Math.PI;
+        arrow.followOrientation = Math.PI;
         animations[0].pathClock.reset();
         animations[0].pathClock.start();
       
@@ -109,7 +106,7 @@ $("#colorWorse").on("click", function () {
    
         animations[0].pathClock.direction = 1;
         
-        ombrage.followOrientation = 0;
+        arrow.followOrientation = 0;
         animations[0].pathClock.reset();
         animations[0].pathClock.start();
       
