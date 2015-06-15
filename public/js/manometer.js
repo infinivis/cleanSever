@@ -1,6 +1,7 @@
 //my variables
 var myAngle = 0;
-
+var myWarning = false;
+var myBar = 1.5;
     // Main canvas and context references
     var canvas;
     var ctx;
@@ -96,8 +97,10 @@ var myAngle = 0;
       ctx.restore();
 
       fond(ctx);
-
-      warning(ctx);
+      if(myWarning){
+          warning(ctx);
+      }
+      
 
       centre(ctx);
 
@@ -137,26 +140,29 @@ var myAngle = 0;
       // warning
       ctx.drawImage(document.getElementById("image5"), 198.0, 244.0);
     }
-
+//var bar = "1.5";
     function centre(ctx) {
 
       // centre/kmh
       ctx.save();
       ctx.font = "97.0px 'Digital-7'";
       ctx.fillStyle = "rgb(108, 102, 173)";
-      ctx.fillText("1.5", 111.9, 195.2);
+      ctx.fillText(myBar, 111.9, 195.2);
       ctx.restore();
     }
 
+    var kmR = 0.5;
     function joueurR(ctx) {
 
       // joueurR/kmh
       ctx.save();
       ctx.font = "35.0px 'Digital-7'";
       ctx.fillStyle = "rgb(108, 102, 173)";
-      ctx.fillText("27.5", 244.7, 230.8);
+      ctx.fillText(kmR, 244.7, 230.8);
       ctx.restore();
     }
+    
+    var kmL = 0.5;
 
     function joueurL(ctx) {
 
@@ -164,6 +170,6 @@ var myAngle = 0;
       ctx.save();
       ctx.font = "35.0px 'Digital-7'";
       ctx.fillStyle = "rgb(108, 102, 173)";
-      ctx.fillText("27.5", 245.3, 172.6);
+      ctx.fillText(kmL, 245.3, 172.6);
       ctx.restore();
     }

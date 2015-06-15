@@ -113,43 +113,75 @@ $("#colorWorse").on("click", function () {
         animations[0].pathClock.reset();
         animations[0].pathClock.start();
       
-   }); 
+   });
+   
+   
    
    $("#j1FAIBLE").on("click", function () {
        console.log("j1 FAIBLE");
-       kmh1= 15;
-       $( document ).trigger( "WindIncoming", kmh1 );
-      
        
-        animations[0].pathClock.stop();
+       kmh1= generateNumber("faible");
+       
+       //$( document ).trigger( "WindIncoming", kmh1 );
       
+       kmL = kmh1;
+        //animations[0].pathClock.stop();
+      convertKMtobar(kmL,kmR);
        
    }); 
    $("#j2FAIBLE").on("click", function () {
        console.log("j2 FAIBLE");
-       kmh2= 15;
-       $( document ).trigger( "WindIncoming", kmh2 );
+        kmh1= generateNumber("faible");
+       
+       //$( document ).trigger( "WindIncoming", kmh1 );
+      
+       kmR = kmh1;
+       convertKMtobar(kmL,kmR);
    }); 
    $("#j1JUSTE").on("click", function () {
        console.log("j1 JUSTE");
-       kmh1= 30;
-       $( document ).trigger( "WindIncoming", kmh1 );
+        kmh1= generateNumber("juste");
+       
+       //$( document ).trigger( "WindIncoming", kmh1 );
+      
+       kmL = kmh1;
    }); 
    $("#j2JUSTE").on("click", function () {
-       console.log("j2 JUSTE");
-       kmh2= 30;
-       $( document ).trigger( "WindIncoming", kmh2 );
+        kmh1= generateNumber("juste");
+       
+       //$( document ).trigger( "WindIncoming", kmh1 );
+      
+       kmR = kmh1;
    }); 
    $("#j1FORT").on("click", function () {
        console.log("j1 FORT");
-       kmh1= 45;
-       $( document ).trigger( "WindIncoming", kmh1 );
+      kmh1= generateNumber("fort");
+       
+       //$( document ).trigger( "WindIncoming", kmh1 );
+      
+       kmL = kmh1;
    }); 
    $("#j2FORT").on("click", function () {
        console.log("j2 FORT");
-       kmh2= 45;
-       $( document ).trigger( "WindIncoming", kmh2 );
+      kmh1= generateNumber("fort");
+       
+       //$( document ).trigger( "WindIncoming", kmh1 );
+      
+       kmR = kmh1;
    }); 
+   
+   var toggleWarning = 0;
+   $("#warning").on("click", function () {
+       console.log("Warning");
+      
+       toggleWarning = toggleWarning+1;
+       if(toggleWarning%2==0){
+           myWarning = false;
+       }else{
+           myWarning = true;
+       }
+      
+   });
    
    $( document ).on( "WindIncoming", function( event, arg1 ) {
    
@@ -169,6 +201,25 @@ $("#colorWorse").on("click", function () {
     
 });/////end DOM ready
 
+function convertKMtobar(kmL,kmR){
+    
+    myBar = Math.round((kmL+kmR)*0.016*10)/10;
+    
+}
+
+function generateNumber(force){
+       if(force=="faible"){
+           kmh1= Math.floor((Math.random() * 15) + 1);
+       }else if(force=="fort") {
+           kmh1= Math.floor((Math.random() * 50) + 35);
+       }else if(force=="juste"){
+           kmh1= Math.floor((Math.random() * 40) + 30);
+       }
+       
+       return kmh1;
+   };
+   
+   
 function growStep() {
     wind=curent+wind_dev;
     for (i in arbre) {
