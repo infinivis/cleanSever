@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Canvas starter</title>
+        <style type="text/css">
+            body{
+                margin: 0;
+            }
+            img {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <img id = "doge" src="http://img2.wikia.nocookie.net/__cb20141105223610/r2d/images/7/73/Dogepic.png" />
+        <canvas id = "canvas" style="background-color: red;"></canvas>
+        <script type="text/javascript">
+            var canvas = document.getElementById('canvas');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            var c = canvas.getContext('2d');
+            c.fillStyle = "#ffffff";
+            var doge = document.getElementById("doge");
+ 
+            var x = 0;
+            var delta = Math.PI / 180;
+
+            function draw()
+            {
+                c.clearRect(0, 0, window.innerWidth, window.innerHeight);
+                c.save();
+                c.translate(canvas.width/2, canvas.height/2);
+                c.rotate(x);
+                //drawDogeFromCenter();
+                
+                drawDogeFromLeft();
+                c.restore();
+                //c.drawImage(doge, 0,0, 256, 256);
+                x += delta;
+                requestAnimationFrame(draw);
+            }
+            draw();
+            
+            function drawDogeFromLeft(){
+                 c.drawImage(doge, 0,0, 256, 256);
+            }
+
+            function drawDogeFromCenter(){
+                c.drawImage(doge, -256/2,-256/2, 256, 256);
+            }
+
+        </script>
+    </body>
+</html>

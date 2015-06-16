@@ -10,36 +10,36 @@ var myBar = 1.5;
     var fps = 60.0;
 
     // Animations
-    var animations = [ new ombrageOrbit() ];
-
-    function ombrageOrbit() {
-
-      // Control and anchor points
-      this.points = [
-                    [ [284.5, 72.8], [252.8, 46.8], [210.6, 33.9], [166.9, 40.5] ],
-                    [ [166.9, 40.5], [84.9, 52.9], [28.5, 129.5], [40.9, 211.5] ],
-                    [ [40.9, 211.5], [46.1, 245.6], [62.4, 275.2], [85.5, 297.4] ]
-                    ];
-
-      // Linear motion index
-      this.linear = [
-                    [0, 0.00, 0.00], [0, 0.41, 0.11], [0, 0.82, 0.22], [1, 0.11, 0.33], 
-                    [1, 0.33, 0.44], [1, 0.55, 0.56], [1, 0.77, 0.67], [1, 0.99, 0.78], 
-                    [2, 0.47, 0.89], [2, 1.00, 1.00]
-                    ];
-
-      // Segment T boundaries
-      this.segmentT = [0.27, 0.79, 1.00];
-
-      this.lastValue = -1.0;
-      this.x = 0;
-      this.y = 0;
-      this.orientation = 0.0;
-      this.pathClock = new clock(5.00, 0.00, 1, false, 0, linear, this.linear.length - 1, 1.00, 0.0000);
-
-      // Update function
-      this.update = updatePath;
-    }
+//    var animations = [ new ombrageOrbit() ];
+//
+//    function ombrageOrbit() {
+//
+//      // Control and anchor points
+//      this.points = [
+//                    [ [284.5, 72.8], [252.8, 46.8], [210.6, 33.9], [166.9, 40.5] ],
+//                    [ [166.9, 40.5], [84.9, 52.9], [28.5, 129.5], [40.9, 211.5] ],
+//                    [ [40.9, 211.5], [46.1, 245.6], [62.4, 275.2], [85.5, 297.4] ]
+//                    ];
+//
+//      // Linear motion index
+//      this.linear = [
+//                    [0, 0.00, 0.00], [0, 0.41, 0.11], [0, 0.82, 0.22], [1, 0.11, 0.33], 
+//                    [1, 0.33, 0.44], [1, 0.55, 0.56], [1, 0.77, 0.67], [1, 0.99, 0.78], 
+//                    [2, 0.47, 0.89], [2, 1.00, 1.00]
+//                    ];
+//
+//      // Segment T boundaries
+//      this.segmentT = [0.27, 0.79, 1.00];
+//
+//      this.lastValue = -1.0;
+//      this.x = 0;
+//      this.y = 0;
+//      this.orientation = 0.0;
+//      this.pathClock = new clock(5.00, 0.00, 1, false, 0, linear, this.linear.length - 1, 1.00, 0.0000);
+//
+//      // Update function
+//      this.update = updatePath;
+//    }
 
     function initManometer() {
 
@@ -73,7 +73,7 @@ var myBar = 1.5;
     function drawFrame() {
 
       // Update animations
-      updateAnimations();
+      //updateAnimations();
 
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -83,16 +83,12 @@ var myBar = 1.5;
       leds(ctx);
 
       ctx.save();
-     ctx.translate(animations[0].x, animations[0].y);
-     ctx.translate(0, 0);
+   
+     ctx.translate(192, 192);
      
-     
-     
-      ctx.rotate(ombrage.followOrientation + animations[0].orientation + myAngle);
-      //ctx.rotate(myAngle);
-      //console.log(ombrage.followOrientation);
-      //console.log(animations[0].orientation);
-      //ctx.rotate(myAngle * Math.PI/180 + animations[0].orientation);
+      
+      ctx.rotate(myAngle);
+    
       ombrage(ctx);
       ctx.restore();
 
@@ -126,7 +122,7 @@ var myBar = 1.5;
       var alpha = ctx.globalAlpha;
 
       // ombrage
-      ctx.drawImage(document.getElementById("image3"), -152.5, -304.0);
+      ctx.drawImage(document.getElementById("image3"), 152.5, 152.5, -304, -304);
     }
 
     function fond(ctx) {

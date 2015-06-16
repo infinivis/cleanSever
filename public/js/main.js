@@ -84,36 +84,32 @@ $("#colorWorse").on("click", function () {
 
     });
     
+   
+   $("#testMoveArrowFor").on("click", function () {
+       console.log("Move arrow +");
+       
+   if(myAngle<15*0.15){
+       myAngle = myAngle+ 0.15;
     
-   $("#testMoveArrow").on("click", function () {
-       console.log("Move arrow");
-   
-   myAngle = myAngle+ 0.1010000000000001;
-   //var arctan = -2.4649345476100026;
-   
+   }else{
+       
+   }
        
       
    }); 
-   $("#arrowBackward").on("click", function () {
-       console.log("Arrow Reverse");
+   $("#testMoveArrowBack").on("click", function () {
+       console.log("Move arrow -");
+       
+   if(myAngle>0){
+       myAngle = myAngle- 0.15;
+       
+   }else{
+       
+   }
    
-        animations[0].pathClock.direction = -1;
-        
-        ombrage.followOrientation = Math.PI;
-        animations[0].pathClock.reset();
-        animations[0].pathClock.start();
-      
    }); 
-   $("#arrowForward").on("click", function () {
-       console.log("Arrow Reverse");
    
-        animations[0].pathClock.direction = 1;
-        
-        ombrage.followOrientation = 0;
-        animations[0].pathClock.reset();
-        animations[0].pathClock.start();
-      
-   });
+
    
    
    
@@ -145,6 +141,7 @@ $("#colorWorse").on("click", function () {
        //$( document ).trigger( "WindIncoming", kmh1 );
       
        kmL = kmh1;
+       convertKMtobar(kmL,kmR);
    }); 
    $("#j2JUSTE").on("click", function () {
         kmh1= generateNumber("juste");
@@ -152,6 +149,7 @@ $("#colorWorse").on("click", function () {
        //$( document ).trigger( "WindIncoming", kmh1 );
       
        kmR = kmh1;
+       convertKMtobar(kmL,kmR);
    }); 
    $("#j1FORT").on("click", function () {
        console.log("j1 FORT");
@@ -160,6 +158,7 @@ $("#colorWorse").on("click", function () {
        //$( document ).trigger( "WindIncoming", kmh1 );
       
        kmL = kmh1;
+       convertKMtobar(kmL,kmR);
    }); 
    $("#j2FORT").on("click", function () {
        console.log("j2 FORT");
@@ -168,14 +167,15 @@ $("#colorWorse").on("click", function () {
        //$( document ).trigger( "WindIncoming", kmh1 );
       
        kmR = kmh1;
+       convertKMtobar(kmL,kmR);
    }); 
    
-   var toggleWarning = 0;
+  
    $("#warning").on("click", function () {
        console.log("Warning");
       
-       toggleWarning = toggleWarning+1;
-       if(toggleWarning%2==0){
+       
+       if(myWarning){
            myWarning = false;
        }else{
            myWarning = true;
@@ -201,9 +201,20 @@ $("#colorWorse").on("click", function () {
     
 });/////end DOM ready
 
-function convertKMtobar(kmL,kmR){
+function fluidRotate(num1,num2){
     
+    
+    
+}
+function convertKMtobar(kmL,kmR){
+    var num1 = myBar;
     myBar = Math.round((kmL+kmR)*0.016*10)/10;
+    myAngle = myBar;
+    if(myBar<2){
+           myWarning = false;
+       }else{
+           myWarning = true;
+       }
     
 }
 
