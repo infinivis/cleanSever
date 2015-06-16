@@ -13,12 +13,15 @@
        
        <div id="boutons">
          
+            <button id="start">start</button>
+            <button id="end">end</button>
             <button id="grow">grow</button>
+            <button id="growOne">grow+</button>
+            <button id="ungrowOne">grow-</button>
             <button id="stop">stop</button>
             <button id="ungrow">ungrow</button>
             <button id="colorWorse">Color Worse</button>
-            <button id="pousse3">Pousse3</button>
-            <button id="perdFeuille">Perd feuille</button>
+             <button id="perdFeuille">Perd feuille</button>
             <button id="explose">Explose</button>
             <button id="j1FAIBLE">j1 FAIBLE</button>
             <button id="j2FAIBLE">j2 FAIBLE</button>
@@ -38,9 +41,10 @@
    <img alt="ombrage" id="image3" style="display: none" src="img/manometer/ombre.png" />
    <img alt="fond" id="image4" style="display: none" src="img/manometer/features.png" />
    <img alt="warning" id="image5" style="display: none" src="img/manometer/warning.png" />
-        <canvas id="canvas" width="1800" height="1000"></canvas>
+   <div id="partie"><canvas id="canvas" width="1800" height="1000"></canvas>
         <!--<img src="img/wind.png" style="bottom:0px; position:fixed;"/>-->
    <canvas id="canvasManometer" width="800" height="600"></canvas>
+   </div>
         <script src="js/lib/jquery-2.1.4.js"></script>
         <script src="js/wsClient.js"></script>
        <!-- <script src="js/lib/es6-shim.js"></script>
@@ -53,6 +57,7 @@
      <!--  <script src="js/manometerAnimation.js"></script>-->
         <script src="js/manometer.js"></script>
         <script src="js/main.js"></script>
+        
         
         <img id="fondImg" src="img/fondLight.jpg"/>
     

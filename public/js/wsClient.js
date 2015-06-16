@@ -1,8 +1,11 @@
-$(function () {
+var connection;
+function startWS(){
+    
+
     // if user is running mozilla then use it's built-in WebSocket
     window.WebSocket = window.WebSocket || window.MozWebSocket;
 
-    var connection = new WebSocket('ws://localhost:8100');
+    connection = new WebSocket('ws://localhost:8100');
 
     connection.onopen = function () {
         console.log("Browser: Connection open");
@@ -18,7 +21,8 @@ $(function () {
         
         console.log("incoming message");
         console.log(message);
-        $("h1").text("Votre souffle est à "+message.data+" km/h");
+        $("h1").text(message.data+" km/h");
+        
         // 
 //       	  var message = JSON.parse(message.data);
 //  	switch(message.type) {
@@ -47,7 +51,8 @@ $(function () {
 //        }
         // handle incoming message
     };
-});
+    }
+
 //
 //
 //
