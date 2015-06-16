@@ -11,6 +11,36 @@ var myRun_interval = function (howLength) {
 
 };
 
+//function Tree(framerate, wind) {
+//    this.wind = 0;
+//    this.timer = 0;
+//    this.frameRate = framerate;
+//    
+//    this.grow = function () {
+//        WIND.getCurrent();
+//        for (i in arbre) {
+//            if ((arbre[i].left == null) && (arbre[i].right == null)) {
+//                if (Math.random() < 0.07) {
+//                    //add(Math.random() * 3, arbre[i]);
+//                    this.add(0, arbre[i]);
+//                }
+//            }
+//        }
+//        recalculate();
+//        console.log("im in growStep");
+//        console.log(arbre.length);
+//    };
+//    this.startAutoGrow = function () {                
+//        this.timer =  setInterval(this.grow, this.frameRate);                                          
+//    };
+//    this.stopAutoGrow = function () {
+//        clearInterval(this.timer);
+//    };
+//}
+//
+//var TREE = new Tree(50);
+//var WIND = new Wind(50);
+//$("#grow").on("click", tree.startAutoGrow);
 
 
 
@@ -288,7 +318,7 @@ function growStep() {
         if ((arbre[i].left == null) && (arbre[i].right == null)) {
             if (Math.random() < 0.07) {
                 add(Math.random() * 3, arbre[i]);
-                //add(1000, arbre[i]);
+                //add(0, arbre[i]);
             }
         }
     }

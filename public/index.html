@@ -4,15 +4,15 @@
         <title>Air Force Tree</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     
+
         <link rel="stylesheet" href="css/style.css"/>
-       
-        
+
+
     </head>
     <body>
-       
-       <div id="boutons">
-         
+
+        <div id="boutons">
+
             <button id="start">start</button>
             <button id="end">end</button>
             <button id="grow">grow</button>
@@ -21,7 +21,7 @@
             <button id="stop">stop</button>
             <button id="ungrow">ungrow</button>
             <button id="colorWorse">Color Worse</button>
-             <button id="perdFeuille">Perd feuille</button>
+            <button id="perdFeuille">Perd feuille</button>
             <button id="explose">Explose</button>
             <button id="j1FAIBLE">j1 FAIBLE</button>
             <button id="j2FAIBLE">j2 FAIBLE</button>
@@ -32,34 +32,37 @@
             <button id="testMoveArrowFor">testMoveArrow +</button>
             <button id="testMoveArrowBack">testMoveArrow -</button>
             <button id="warning">Warning</button>
-         
-  </div>
-         
+
+        </div>
+
         <h1></h1>
-<img alt="couronne" id="image1" style="display: none" src="img/manometer/couronne.png" />
-   <img alt="leds" id="image2" style="display: none" src="img/manometer/leds.png" />
-   <img alt="ombrage" id="image3" style="display: none" src="img/manometer/ombre.png" />
-   <img alt="fond" id="image4" style="display: none" src="img/manometer/features.png" />
-   <img alt="warning" id="image5" style="display: none" src="img/manometer/warning.png" />
-   <div id="partie"><canvas id="canvas" width="1800" height="1000"></canvas>
-        <!--<img src="img/wind.png" style="bottom:0px; position:fixed;"/>-->
-   <canvas id="canvasManometer" width="800" height="600"></canvas>
-   </div>
+        <img alt="couronne" id="image1" style="display: none" src="img/manometer/couronne.png" />
+        <img alt="leds" id="image2" style="display: none" src="img/manometer/leds.png" />
+        <img alt="ombrage" id="image3" style="display: none" src="img/manometer/ombre.png" />
+        <img alt="fond" id="image4" style="display: none" src="img/manometer/features.png" />
+        <img alt="warning" id="image5" style="display: none" src="img/manometer/warning.png" />
+        <div id="partie">
+            <canvas id="canvas" width="1800" height="1000"></canvas>
+            <!--<img src="img/wind.png" style="bottom:0px; position:fixed;"/>-->
+            <canvas id="canvasManometer" width="800" height="600"></canvas>
+        </div>
         <script src="js/lib/jquery-2.1.4.js"></script>
         <script src="js/wsClient.js"></script>
-       <!-- <script src="js/lib/es6-shim.js"></script>
-         <script src="js/lib/victor.js"></script>-->
-       
-       <script src="js/canvas.js"></script>
+        <!-- <script src="js/lib/es6-shim.js"></script>
+          <script src="js/lib/victor.js"></script>-->
+<script src="js/noeud.js"></script>
+<script src="js/myTree.js"></script>
+        <!--<script src="js/canvas.js"></script>-->
         <script src="js/wind.js"></script>
         <script src="js/tree.js"></script>
         
-     <!--  <script src="js/manometerAnimation.js"></script>-->
+
+        <!--  <script src="js/manometerAnimation.js"></script>-->
         <script src="js/manometer.js"></script>
         <script src="js/main.js"></script>
-        
-        
+
+
         <img id="fondImg" src="img/fondLight.jpg"/>
-    
-     
+
+
 </html>
