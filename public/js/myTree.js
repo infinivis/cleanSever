@@ -1,3 +1,5 @@
+var dessin= document.getElementById("canvas");
+dessin.context=dessin.getContext('2d');
 var widthFull = $( window ).width();
 var heightFull = $( window ).height();
 console.log(widthFull);
@@ -20,23 +22,21 @@ function Tree(framerate) {
     this.tronc[0] = new NOEUD;
     this.tronc[1] = new NOEUD;
     this.tronc[1].parent = this.tronc[0];
-    tronc[0].x = arbrePositionX;
-    tronc[0].y = arbrePositionY;
-    tronc[1].x = arbrePositionX;
-    tronc[1].y = arbrePositionY - 10;
-
+    this.tronc[0].x = arbrePositionX;
+    this.tronc[0].y = arbrePositionY;
+    this.tronc[1].x = arbrePositionX;
+    this.tronc[1].y = arbrePositionY - 10;
     this.run = function () {
-        this.timer = setInterval(this.run, 1);
-for(i in tronc){
-				if((tronc[i].left==null)&&(tronc[i].right==null)){
+        while (this.tronc.length<=200){
+            for(i in this.tronc){
+				if((this.tronc[i].left==null)&&(this.tronc[i].right==null)){
 					if(Math.random()<0.07){
-						add(Math.random()*3,tronc[i]);
+						add(Math.random()*3,this.tronc[i]);
 					}
 				}
 			}
-			this.recalculate();		
-			//if(arbre.length>2000) clearInterval(run_interval);
-			if(tronc.length>200) clearInterval(this.timer);
+			this.recalculate();
+        }
     }
 
     this.grow = function () {
@@ -53,6 +53,7 @@ for(i in tronc){
         console.log("im in growStep");
         console.log(this.tronc.length);
     };
+    
     this.startAutoGrow = function () {
         this.timer = setInterval(this.grow, this.frameRate);
     };
@@ -172,11 +173,45 @@ for(i in tronc){
             }
         }
     }
+    this.show = function (){
+        //console.log("In show function");
+        var img=document.getElementById("fondImg");
+var pat=dessin.context.createPattern(img,"repeat");
+//dessin.context.rect(0,0,800,600);
+dessin.context.fillStyle=pat;
+dessin.context.fill();
+    	dessin.context.fillRect(0,0,widthFull,heightFull);
+        
+        wind=curent*wind_strength+wind_dev;
+			this.recalculate;								
+			dessin.context.strokeStyle= troncColor;			
+			dessin.context.save();
+			dessin.context.translate(-200,-270);
+			dessin.context.scale(1.5,1.5);
+			dessin.context.translate(0,-60);
+                        
+                        for(x=2;x<TREE.tronc.length;x++){
+				dessin.context.beginPath();
+				dessin.context.moveTo(TREE.tronc[x].x,TREE.tronc[x].y);
+				dessin.context.quadraticCurveTo(TREE.tronc[x].parent.x,TREE.tronc[x].parent.y,TREE.tronc[x].parent.parent.x,TREE.tronc[x].parent.parent.y);
+				dessin.context.moveTo(TREE.tronc[x].parent.parent.x,TREE.tronc[x].parent.parent.y);
+				dessin.context.closePath();
+				dessin.context.lineWidth=Math.sqrt(TREE.tronc[x].length)*0.12;
+				dessin.context.lineCap="square";
+                                dessin.context.stroke();						
+			}
+			//draw();
+                        //TREE.draw();
+			dessin.context.restore();
+    }
 
 }
 
-var TREE = new Tree(50);
+var TREE = new Tree(60);
+console.log(TREE);
+//console.log(TREE.tronc[1]);
+ 
 //var WIND = new Wind(50);
 $("#grow").on("click", TREE.startAutoGrow);
-console.log(TREE.tronc[0]);
-console.log(TREE.tronc[1]);
+TREE.run;
+setInterval(TREE.show, 60);

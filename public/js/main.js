@@ -95,28 +95,28 @@ $(document).ready(function () {
 
     });
 
-    $("#grow").on("click", function () {
-        console.log("Growing");
-
-        var myVar =
-                setInterval(function () {
-                    growStep();
-                }, 50);
-
-
-
-        function myStopFunction() {
-            clearInterval(myVar);
-        }
-
-
-        $("#stop").on("click", function () {
-            console.log("Stop grow");
-            myStopFunction();
-
-        });
-
-    });
+//    $("#grow").on("click", function () {
+//        console.log("Growing");
+//
+//        var myVar =
+//                setInterval(function () {
+//                    growStep();
+//                }, 50);
+//
+//
+//
+//        function myStopFunction() {
+//            clearInterval(myVar);
+//        }
+//
+//
+//        $("#stop").on("click", function () {
+//            console.log("Stop grow");
+//            myStopFunction();
+//
+//        });
+//
+//    });
     $("#ungrow").on("click", function () {
         console.log("UNGrowing");
 
