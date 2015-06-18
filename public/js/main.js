@@ -45,8 +45,12 @@ var myRun_interval = function (howLength) {
 
 
 $(document).ready(function () {
-    initManometer();
+    
     console.log("ready!");
+    initManometer();
+    initTree();
+
+
 
     $("#start").on("click", function () {
         console.log("Start");
