@@ -10,20 +10,29 @@
 
     </head>
     <body>
-
-        <div id="boutons">
-
+        <div id="boutonsGame">
             <button id="start">start</button>
-            <button id="run">run</button>
+
             <button id="end">end</button>
+        </div>
+
+
+        <div id="boutonsTree">
+            <button id="startWind">run Wind</button>
+            <button id="stopWind">stop Wind</button>
+            <button id="run">run</button>
             <button id="grow">grow</button>
-            <button id="growOne">grow+</button>
-            <button id="ungrowOne">grow-</button>
-            <button id="stop">stop</button>
-            <button id="ungrow">ungrow</button>
+            <button id="stopGrow">Stop Grow</button>
+            
+            <button id="unGrow">ungrow</button>
             <button id="colorWorse">Color Worse</button>
             <button id="perdFeuille">Perd feuille</button>
             <button id="explose">Explose</button>
+            <button id="newDebri">New Debri</button>
+
+
+        </div>
+        <div id="boutonsMano">
             <button id="j1FAIBLE">j1 FAIBLE</button>
             <button id="j2FAIBLE">j2 FAIBLE</button>
             <button id="j1JUSTE">j1 JUSTE</button>
@@ -33,9 +42,7 @@
             <button id="testMoveArrowFor">testMoveArrow +</button>
             <button id="testMoveArrowBack">testMoveArrow -</button>
             <button id="warning">Warning</button>
-
         </div>
-
         <h1></h1>
         <img id="fondImg" style="display: none" src="img/fondLight.jpg"/>
         <img alt="couronne" id="image1" style="display: none" src="img/manometer/couronne.png" />
@@ -50,21 +57,22 @@
         </div>
         <script src="js/lib/jquery-2.1.4.js"></script>
         <script src="js/wsClient.js"></script>
-        <!-- <script src="js/lib/es6-shim.js"></script>
-          <script src="js/lib/victor.js"></script>-->
-<script src="js/noeud.js"></script>
-<script src="js/myTree.js"></script>
-        <!--<script src="js/canvas.js"></script>-->
-        <script src="js/wind.js"></script>
-        <!--<script src="js/tree.js"></script>-->
-        
 
-        <!--  <script src="js/manometerAnimation.js"></script>-->
+        <!-- load object -->
+        <script src="js/object/noeud.js"></script>
+        <script src="js/object/feuille.js"></script>
+
+        <script src="js/tree.js"></script>
         <script src="js/manometer.js"></script>
-        <script src="js/main.js"></script>
-
-
         
+
+
+        <script src="js/draw.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/ready.js"></script>
+
+
+
 
 
 </html>

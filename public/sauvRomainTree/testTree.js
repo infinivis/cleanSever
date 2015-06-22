@@ -294,25 +294,25 @@
 			
 			
 			dessin.context.fillStyle="yellow";
-			for(i in debri){
-				dessin.context.beginPath();
-				dessin.context.arc(debri[i].x,debri[i].y, debri[i].size/5, 0, Math.PI*2, true); 
-				dessin.context.closePath();
-				dessin.context.fill();
-			}
+//			for(i in debri){
+//				dessin.context.beginPath();
+//				dessin.context.arc(debri[i].x,debri[i].y, debri[i].size/5, 0, Math.PI*2, true); 
+//				dessin.context.closePath();
+//				dessin.context.fill();
+//			}
 			
 			dessin.context.lineWidth=0.4;
-			for(i in grass){
- 
-				dessin.context.beginPath();
-				dessin.context.moveTo(grass[i].x,grass[i].y);
-				var x=grass[i].x-wind*grass[i].size*5+grass[i].der*grass[i].size*0.05;
-				var y=grass[i].y-grass[i].size+Math.abs(wind)*grass[i].size*3+Math.abs(grass[i].der)*grass[i].size*0.05;
-				dessin.context.quadraticCurveTo(grass[i].x,grass[i].y-grass[i].size*0.6,x,y);
-				dessin.context.moveTo(x,y);
-				dessin.context.closePath();
-				dessin.context.stroke();
-			}
+//			for(i in grass){
+// 
+//				dessin.context.beginPath();
+//				dessin.context.moveTo(grass[i].x,grass[i].y);
+//				var x=grass[i].x-wind*grass[i].size*5+grass[i].der*grass[i].size*0.05;
+//				var y=grass[i].y-grass[i].size+Math.abs(wind)*grass[i].size*3+Math.abs(grass[i].der)*grass[i].size*0.05;
+//				dessin.context.quadraticCurveTo(grass[i].x,grass[i].y-grass[i].size*0.6,x,y);
+//				dessin.context.moveTo(x,y);
+//				dessin.context.closePath();
+//				dessin.context.stroke();
+//			}
 			
 		}
 		//var wind_img=new Image();
