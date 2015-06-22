@@ -88,7 +88,7 @@ function Tree(framerate) {
 
     this.recalculate = function () {
         //do not add node if tree is allready at full size
-        if (this.tronc.length < this.maxNode) {
+       // if (this.tronc.length < this.maxNode) {
             for (x in this.tronc) {
                 if (this.tronc[x].parent != null && this.tronc[x].length > 10 && this.tronc[x].left == null) {
                     this.tronc[x].left = new NOEUD;
@@ -101,7 +101,7 @@ function Tree(framerate) {
                     this.tronc.push(this.tronc[x].right);
                 }
             }
-        }
+        //}
         var stack = new Array;
         stack.push(this.tronc[1]);
         while (stack.length > 0) {

@@ -4,6 +4,7 @@ function draw(){
     dessin.context.fillStyle=pat;
     dessin.context.fill();
     dessin.context.fillRect(0,0,widthFull,heightFull);
+    TREE.recalculate();
     dessin.context.strokeStyle= troncColor;
     dessin.context.save();
     dessin.context.translate(-200,-270);
@@ -20,15 +21,19 @@ function draw(){
             dessin.context.stroke();
     }
     // feuille
-    dessin.context.fillStyle="orange";
+    dessin.context.fillStyle="green";
 			for(x in TREE.tronc){
 				if(TREE.tronc[x].length<10){
 					dessin.context.beginPath();
-					dessin.context.arc(TREE.tronc[x].x,TREE.tronc[x].y, TREE.tronc[x].length/5, 0, Math.PI*2, true); 
+                                        
+					dessin.context.arc(TREE.tronc[x].x,TREE.tronc[x].y, TREE.tronc[x].length/2, 0, Math.PI, true);
+                                        //dessin.context.rotate(Math.random());
+					//dessin.context.arc(TREE.tronc[x].x,TREE.tronc[x].y, TREE.tronc[x].length/5, 0, Math.PI*2, true); 
 					dessin.context.closePath();
 					dessin.context.fill();
 				}
     
 }
+///feuille
 dessin.context.restore();
 }

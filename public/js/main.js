@@ -10,6 +10,9 @@ setInterval(draw, 30);
 
 
 
+$("#length").on("click", function () {
+    console.log(TREE.tronc.length);
+});
 $("#startWind").on("click", function () {
     TREE.startWind();
 });
