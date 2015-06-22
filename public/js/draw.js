@@ -2,6 +2,7 @@ function draw() {
     var img = document.getElementById("fondImg");
     var pat = dessin.context.createPattern(img, "repeat");
     dessin.context.fillStyle = pat;
+    
     dessin.context.fill();
     dessin.context.fillRect(0, 0, widthFull, heightFull);
     TREE.recalculate();
@@ -26,12 +27,14 @@ function draw() {
         if (TREE.tronc[x].length < 10) {
             dessin.context.beginPath();
 
-            dessin.context.arc(TREE.tronc[x].x, TREE.tronc[x].y, TREE.tronc[x].length / 2, Math.random(), Math.PI, true);
+            
+            dessin.context.arc(TREE.tronc[x].x, TREE.tronc[x].y, TREE.tronc[x].length / 2, 0, Math.PI, true);
+            //dessin.context.arc(TREE.tronc[x].x,TREE.tronc[x].y, TREE.tronc[x].length/5, 0, Math.PI*2, true);
 //            dessin.context.lineWidth = 1;
 //            // line color
 //            dessin.context.strokeStyle = '#003200';
 //            dessin.context.stroke();
-            //dessin.context.arc(TREE.tronc[x].x,TREE.tronc[x].y, TREE.tronc[x].length/5, 0, Math.PI*2, true); 
+             
             dessin.context.closePath();
             dessin.context.fill();
         }
@@ -41,10 +44,13 @@ function draw() {
 
 
 // debri
-    dessin.context.fillStyle = "yellow";
+    dessin.context.fillStyle = "orange";
     for (i in TREE.debriArray) {
         dessin.context.beginPath();
-        dessin.context.arc(TREE.debriArray[i].x, TREE.debriArray[i].y, TREE.debriArray[i].size / 5, 0, Math.PI * 2, true);
+        // context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+        dessin.context.drawImage(document.getElementById("abricot"), TREE.debriArray[i].x, TREE.debriArray[i].y, TREE.debriArray[i].size*2, TREE.debriArray[i].size*2);
+        //dessin.context.arc(TREE.debriArray[i].x, TREE.debriArray[i].y, TREE.debriArray[i].size, 0, Math.PI * 2, true);
+        //dessin.context.arc(TREE.debriArray[i].x, TREE.debriArray[i].y, TREE.debriArray[i].size / 5, 0, Math.PI * 2, true);
         dessin.context.closePath();
         dessin.context.fill();
     }

@@ -176,11 +176,6 @@ $(document).on("WindIncoming", function (event, arg1) {
 ///////////// functions ////////////////////////
 ////////////////////////////////////////////////
 
-var kmh1;
-var kmh2;
-var howLength;
-var count=30;
-
 function timer()
 {
     count = count - 1;
@@ -223,12 +218,3 @@ function convertKMtobar(kmL, kmR) {
     }
 
 };
-
-
-
-
-
-
-function myTimer() {
-    console.log("Hello");
-}

@@ -1,7 +1,3 @@
-//my variables
-var myAngle = 0;
-var myWarning = false;
-var myBar = 1.5;
     // Main canvas and context references
     var canvas;
     var ctx;
@@ -147,7 +143,7 @@ var myBar = 1.5;
       ctx.restore();
     }
 
-    var kmR = 0.5;
+    
     function joueurR(ctx) {
 
       // joueurR/kmh
@@ -158,7 +154,7 @@ var myBar = 1.5;
       ctx.restore();
     }
     
-    var kmL = 0.5;
+    
 
     function joueurL(ctx) {
 

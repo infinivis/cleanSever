@@ -1,11 +1,3 @@
-var widthFull = $(window).width();
-var heightFull = $(window).height();
-var dessin;
-var arbrePositionX = 550;
-var arbrePositionY = 800;
-var troncColor = "#6B4226";
-var TREE;
-
 function initTree() {
     console.log("Init Tree");
     dessin = document.getElementById("canvas");
@@ -70,12 +62,16 @@ function Tree(framerate) {
     };
     this.unGrow = function () {
 
-        for (i in this.tronc) {
+    for (i in this.tronc) {
+       
             if (this.tronc[i].left == null && Math.random() < 0.07) {
                 this.substract(Math.random() * 3, this.tronc[i]);
+                //console.log(this.tronc.length);
             }
         }
         this.recalculate();
+    
+   
     };
 
     
@@ -142,11 +138,23 @@ function Tree(framerate) {
         child.x = current.x + len * Math.cos(angle);
         child.y = current.y - len * Math.sin(angle);
     };
-
+// kmR kmL
+//    this.armonicWind = function () {
+//        
+//        this.wind = (kmR - kmL)/10000;
+//        console.log(this.wind);
+//    };
+//    this.armonicWind = function () {
+//        this.windMomentum -= (this.wind - ((kmR - kmL)*0.1 - 1 / 2)) * 0.0008 * (kmR - kmL)*0.1;
+//        this.wind += this.windMomentum;
+//        this.windMomentum *= 0.997;
+//        console.log(this.wind);
+//    };
     this.armonicWind = function () {
         this.windMomentum -= (this.wind - (Math.random() - 1 / 2)) * 0.0008 * Math.random();
         this.wind += this.windMomentum;
         this.windMomentum *= 0.997;
+        console.log(this.wind);
     };
     this.runDebri = function(){
 			for(i in this.debriArray){
