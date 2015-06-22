@@ -14,11 +14,13 @@ function initTree() {
 }
 
 function Tree(framerate) {
+    this.debriArray = new Array;
     this.maxNode = 2000;
     this.wind = 0;
     this.windMomentum = 0;
     this.timer = null;
     this.timerWind = null;
+    this.timerDebri = null;
     this.frameRate = framerate;
     this.gamma = 0.86;
     this.tronc = new Array();
@@ -29,10 +31,18 @@ function Tree(framerate) {
     this.tronc[0].y = arbrePositionY;
     this.tronc[1].x = arbrePositionX;
     this.tronc[1].y = arbrePositionY - 10;
+    
+    this.startDebri = function () {
+        this.timerDebri = setInterval($.proxy(this.runDebri, this), 2);
+    };
+
+    this.stopDebri = function () {
+        clearInterval(this.timerDebri);
+    };
 
     this.startWind = function () {
         console.log("Start Wind");
-        this.timerWind = setInterval($.proxy(this.armonicWind, this), 60);
+        this.timerWind = setInterval($.proxy(this.armonicWind, this), 2);
     };
     this.stopWind = function () {
         clearInterval(this.timerWind);
@@ -138,33 +148,32 @@ function Tree(framerate) {
         this.wind += this.windMomentum;
         this.windMomentum *= 0.997;
     };
-    this.debri = function(){
-        var debri = new Array;
-		function run_debri(){
-			for(i in debri){
-				debri[i].momx+=-wind*3*Math.random();
-				debri[i].momy+=(Math.random()-6/13)*40*Math.abs(wind);
-				debri[i].x+=debri[i].momx-wind*30*(Math.random()+1);
-				debri[i].y+=debri[i].momy;
-				if(debri[i].y>600){
-					debri.splice(i,1);
+    this.runDebri = function(){
+			for(i in this.debriArray){
+				this.debriArray[i].momx+=-this.wind*3*Math.random();
+				this.debriArray[i].momy+=(Math.random()-6/13)*40*Math.abs(this.wind);
+				this.debriArray[i].x+=this.debriArray[i].momx-this.wind*30*(Math.random()+1);
+				this.debriArray[i].y+=this.debriArray[i].momy;
+				if(this.debriArray[i].y>600){
+					this.debriArray.splice(i,1);
 				}
 			}
-		}
+		};
 		
-		var debri_gen=null;
-		setTimeout("debri_gen=setInterval(new_debri,30);",2000);
-		setInterval(run_debri,30);
-    };
+		
+ 
     this.newDebri = function(){
-        var debri = new Array;
 			if(Math.random()>0.8){
 				var temp=this.tronc[Math.floor(Math.random()*this.tronc.length)];
 				var leaf=new FEUILLE;
 				leaf.size=Math.random()*10;
 				leaf.x=temp.x;
 				leaf.y=temp.y;
-				debri.push(leaf);
+				this.debriArray.push(leaf);
 			}
-		}
-}
+		};
+                
+                }
+//                var debri_gen=null;
+//		setTimeout("debri_gen=setInterval(new_debri,30);",2000);
+//		setInterval(run_debri,30);

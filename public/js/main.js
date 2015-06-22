@@ -8,7 +8,18 @@ setInterval(draw, 30);
 ////    events  ///////////////////////////////// 
 ///////////////////////////////////////////////// 
 
-
+$("#stopDebri").on("click", function () {
+    console.log("Stop Debri");
+    TREE.stopDebri();
+});
+$("#newDebri").on("click", function () {
+    console.log("New Debri");
+    TREE.newDebri();
+});
+$("#runDebri").on("click", function () {
+    console.log("Start Debri");
+    TREE.startDebri();
+});
 
 $("#length").on("click", function () {
     console.log(TREE.tronc.length);
@@ -19,9 +30,7 @@ $("#startWind").on("click", function () {
 $("#stopWind").on("click", function () {
     TREE.stopWind();
 });
-$("#newDebri").on("click", function () {
-    TREE.newDebri();
-});
+
 $("#grow").on("click", function () {
     TREE.startAutoGrow()
 });
@@ -115,59 +124,34 @@ $("#testMoveArrowBack").on("click", function () {
 
 $("#j1FAIBLE").on("click", function () {
     console.log("j1 FAIBLE");
-
-    kmh1 = generateNumber("faible");
-
-    //$( document ).trigger( "WindIncoming", kmh1 );
-
-    kmL = kmh1;
-    //animations[0].pathClock.stop();
-    convertKMtobar(kmL, kmR);
-
+//$( document ).trigger( "WindIncoming", kmh1 );
+       setInterval(function(){simWindoo("left", "faible")}, 1000);
 });
+
+
 $("#j2FAIBLE").on("click", function () {
     console.log("j2 FAIBLE");
-    kmh1 = generateNumber("faible");
+    setInterval(function(){simWindoo("right", "faible")}, 1000);
 
-    //$( document ).trigger( "WindIncoming", kmh1 );
 
-    kmR = kmh1;
-    convertKMtobar(kmL, kmR);
 });
 $("#j1JUSTE").on("click", function () {
     console.log("j1 JUSTE");
-    kmh1 = generateNumber("juste");
+   setInterval(function(){simWindoo("left", "juste")}, 1000);
 
-    //$( document ).trigger( "WindIncoming", kmh1 );
-
-    kmL = kmh1;
-    convertKMtobar(kmL, kmR);
 });
 $("#j2JUSTE").on("click", function () {
-    kmh1 = generateNumber("juste");
-
-    //$( document ).trigger( "WindIncoming", kmh1 );
-
-    kmR = kmh1;
-    convertKMtobar(kmL, kmR);
+    console.log("j2 JUSTE");
+    setInterval(function(){simWindoo("right", "juste")}, 1000);
+    
 });
 $("#j1FORT").on("click", function () {
     console.log("j1 FORT");
-    kmh1 = generateNumber("fort");
-
-    //$( document ).trigger( "WindIncoming", kmh1 );
-
-    kmL = kmh1;
-    convertKMtobar(kmL, kmR);
+    setInterval(function(){simWindoo("left", "fort")}, 1000);
 });
 $("#j2FORT").on("click", function () {
     console.log("j2 FORT");
-    kmh1 = generateNumber("fort");
-
-    //$( document ).trigger( "WindIncoming", kmh1 );
-
-    kmR = kmh1;
-    convertKMtobar(kmL, kmR);
+   setInterval(function(){simWindoo("right", "fort")}, 1000);
 });
 
 $("#warning").on("click", function () {
@@ -191,6 +175,12 @@ $(document).on("WindIncoming", function (event, arg1) {
 ////////////////////////////////////////////////
 ///////////// functions ////////////////////////
 ////////////////////////////////////////////////
+
+var kmh1;
+var kmh2;
+var howLength;
+var count=30;
+
 function timer()
 {
     count = count - 1;
@@ -198,4 +188,47 @@ function timer()
     console.log(count);
 
     //Do code for showing the number of seconds here
+}
+
+function fluidRotate(num1, num2) {
+
+
+
+}
+function simWindoo(player, force) {
+    if (force == "faible") {
+        kmh1 = Math.floor((Math.random() * 15) + 1);
+    } else if (force == "fort") {
+        kmh1 = Math.floor((Math.random() * 50) + 35);
+    } else if (force == "juste") {
+        kmh1 = Math.floor((Math.random() * 40) + 30);
+    }
+    
+    if(player=="left"){
+        kmL = kmh1;
+    }else{
+        kmR = kmh1;
+    }
+    
+    convertKMtobar(kmL, kmR);
+};
+function convertKMtobar(kmL, kmR) {
+    var num1 = myBar;
+    myBar = Math.round((kmL + kmR) * 0.016 * 10) / 10;
+    myAngle = myBar;
+    if (myBar < 2) {
+        myWarning = false;
+    } else {
+        myWarning = true;
+    }
+
+};
+
+
+
+
+
+
+function myTimer() {
+    console.log("Hello");
 }
