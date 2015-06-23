@@ -4,7 +4,7 @@
         <title>Air Force Tree</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<link rel="manifest" href="manifest.json">
         <link rel="stylesheet" href="css/style.css"/>
 
 
@@ -14,13 +14,12 @@
             <button id="start">start</button>
 
             <button id="end">end</button>
+            <button id="capture">capture</button>
         </div>
 
 
         <div id="boutonsTree">
             <button id="length">length</button>
-            <button id="startWind">run Wind</button>
-            <button id="stopWind">stop Wind</button>
             <button id="run">run</button>
             <button id="grow">grow</button>
             <button id="stopGrow">Stop Grow</button>
@@ -46,6 +45,11 @@
             <button id="testMoveArrowBack">testMoveArrow -</button>
             <button id="warning">Warning</button>
         </div>
+        <div id="boutonsWind">
+            <button id="startWind">run Wind</button>
+            <button id="stopWind">stop Wind</button>
+            <button id="changeWind">change Wind</button>
+        </div>
         <h1></h1>
         <img id="abricot" style="display: none" src="img/abricot/abricot.png"/>
         <img id="fondImg" style="display: none" src="img/fondLight.jpg"/>
@@ -59,7 +63,10 @@
             <!--<img src="img/wind.png" style="bottom:0px; position:fixed;"/>-->
             <canvas id="canvasManometer" width="800" height="600"></canvas>
         </div>
+        <div id="screenshot"></div>
         <script src="js/lib/jquery-2.1.4.js"></script>
+       <!-- <script src="js/screenshot/background.js"></script>
+        <script src="js/screenshot/screenshot.js"></script>-->
         <script src="js/globals.js"></script>
         <script src="js/wsClient.js"></script>
         

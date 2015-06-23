@@ -46,13 +46,15 @@ function draw() {
 // debri
     dessin.context.fillStyle = "orange";
     for (i in TREE.debriArray) {
+         if (TREE.tronc[i].length < 10) {
         dessin.context.beginPath();
         // context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
-        dessin.context.drawImage(document.getElementById("abricot"), TREE.debriArray[i].x, TREE.debriArray[i].y, TREE.debriArray[i].size*2, TREE.debriArray[i].size*2);
+        dessin.context.drawImage(document.getElementById("abricot"), TREE.tronc[i].x, TREE.tronc[i].y, TREE.debriArray[i].size*2, TREE.debriArray[i].size*2);
         //dessin.context.arc(TREE.debriArray[i].x, TREE.debriArray[i].y, TREE.debriArray[i].size, 0, Math.PI * 2, true);
         //dessin.context.arc(TREE.debriArray[i].x, TREE.debriArray[i].y, TREE.debriArray[i].size / 5, 0, Math.PI * 2, true);
         dessin.context.closePath();
-        dessin.context.fill();
+//        dessin.context.fill();
+        }
     }
     //end debri
     dessin.context.restore();

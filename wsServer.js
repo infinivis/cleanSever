@@ -49,7 +49,8 @@ ws.on('connection', function (client) {
          //console.log(object.windSpeed);  
                  ws.clients.forEach(function each(clientCurrent) {
             if(clientCurrent!=client){
-                clientCurrent.send(object.windSpeed);
+                //clientCurrent.send(object.windSpeed);
+                clientCurrent.send(object.id);
             }else{
                 
             }

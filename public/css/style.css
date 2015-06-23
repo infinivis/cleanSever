@@ -64,8 +64,10 @@ margin: 0;
 
 
 
-#boutons{
+button{
     line-height:normal;
+    font-family: Calibri;
+    font-size: 16pt;
 }
 
 
@@ -77,9 +79,4 @@ margin: 0;
 
 h1{
     text-align: center;
-}
-
-img{
-    display: none;
-
 }

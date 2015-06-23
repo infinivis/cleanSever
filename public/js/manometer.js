@@ -118,7 +118,8 @@
       var alpha = ctx.globalAlpha;
 
       // ombrage
-      ctx.drawImage(document.getElementById("image3"), 152.5, 152.5, -304, -304);
+     ctx.drawImage(document.getElementById("image3"), 152.5, 152.5, -304, -304);
+    
     }
 
     function fond(ctx) {

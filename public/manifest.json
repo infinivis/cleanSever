@@ -1,0 +1,12 @@
+{
+  "name": "Air Force Tree",
+  "description": "Air Force Tree est un jeu de souffle utilisant un anémomètre connecté à un smartphone et dialogant avec l'application",
+  "version": "1",
+ 
+  "manifest_version": 2,
+  "permissions": ["tabs", "<all_urls>"],
+"background": {
+    "scripts": ["js/screenshot/background.js"]
+},
+"display": "fullscreen"
+}

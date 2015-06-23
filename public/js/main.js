@@ -8,13 +8,24 @@ setInterval(draw, 30);
 ////    events  ///////////////////////////////// 
 ///////////////////////////////////////////////// 
 
+$("#capture").on("click", function () {
+   
+ img= dessin.toDataURL();
+
+ //window.open(img);
+ var imgElement = $("<img>");
+ imgElement.attr('src', img);
+$("#screenshot").append(imgElement);
+    
+    
+});
 $("#stopDebri").on("click", function () {
     console.log("Stop Debri");
     TREE.stopDebri();
 });
 $("#newDebri").on("click", function () {
     console.log("New Debri");
-    TREE.newDebri();
+    setInterval(TREE.newDebri, 1);
 });
 $("#runDebri").on("click", function () {
     console.log("Start Debri");
@@ -29,6 +40,11 @@ $("#startWind").on("click", function () {
 });
 $("#stopWind").on("click", function () {
     TREE.stopWind();
+});
+$("#changeWind").on("click", function () {
+    myWind += 0.01;
+    console.log("Mon vent                     "+myWind);
+    
 });
 
 $("#grow").on("click", function () {
@@ -57,7 +73,7 @@ $("#start").on("click", function () {
             //counter ended, do something here
             console.log("Timer finish");
             count = 30;
-            connection.close();
+            //connection.close();
             return;
         }
 

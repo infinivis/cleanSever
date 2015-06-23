@@ -5,6 +5,9 @@ var kmh2;
 var howLength;
 var count=30;
 
+//wind
+var myWind = 0;
+
 //tree
 var widthFull = $(window).width();
 var heightFull = $(window).height();
